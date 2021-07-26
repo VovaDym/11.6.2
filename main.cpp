@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
-bool checkChar (char symbol, bool &part)
+bool checkChar (char symbol, int &part)
 {
     bool result;
-    if (!part)
+    if (part == 0)
     {
         result = (symbol == '!' || (symbol >= '"' && symbol <= '\'') ||
                   symbol == '*' || (symbol >= '+' && symbol <= '9') ||
@@ -25,7 +25,7 @@ void checkEmail (std::string &address)
     bool correctAddress {true};
     int shiftSymbolCounter {0};
     int firstPartCounter {0}, secondPartCounter {0};
-    bool part (false);
+    int part = 0;
     if (address[0] == '.' || address[address.length() - 1] == '.')
     {
         correctAddress = false;
@@ -38,7 +38,7 @@ void checkEmail (std::string &address)
         {
 
             if ((address[i] == '.' && address[i+1] == '.') || (address[i] == '.' && address[i+1] == '@')
-               || (address[i] == '@' && address[i+1] == '.'))
+                || (address[i] == '@' && address[i+1] == '.'))
             {
                 correctAddress = false;
             }
@@ -46,7 +46,7 @@ void checkEmail (std::string &address)
             if (address[i] == '@')
             {
                 shiftSymbolCounter++;
-                part = true;
+                part = 1;
             } else if (shiftSymbolCounter > 0)
             {
                 secondPartCounter++;
@@ -79,5 +79,3 @@ int main()
     getline(std::cin, email);
     checkEmail(email);
 }
-
-
