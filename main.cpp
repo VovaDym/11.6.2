@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-bool checkChar (char symbol, int &part)
+bool checkChar (char symbol, int part)
 {
     bool result;
     if (part == 0)
@@ -26,7 +26,7 @@ void checkEmail (std::string &address)
     int shiftSymbolCounter {0};
     int firstPartCounter {0}, secondPartCounter {0};
     int part = 0;
-    if (address[0] == '.' || address[address.length() - 1] == '.')
+    if (address[0] == '.' || address[address.length() - 1] == '.' || address[address.length() - 1] == '@' )
     {
         correctAddress = false;
     }
