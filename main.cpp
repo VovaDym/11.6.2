@@ -27,6 +27,7 @@ void checkEmail (std::string &address)
     int firstPartCounter {0}, secondPartCounter {0};
     int part = 0;
     if (address[0] == '.' || address[address.length() - 1] == '.' || address[address.length() - 1] == '@' )
+         // я думаю,что теперь в цикле не будет проверки когда '@' завершает строку
     {
         correctAddress = false;
     }
